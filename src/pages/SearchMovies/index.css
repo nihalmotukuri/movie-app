@@ -11,10 +11,10 @@
 .search-component input {
     background-color: #000;
     outline: none;
-    border: 1px solid #27272a;
-    color: grey;
+    border: 1px solid #fff;
+    color: #fff;
     padding: 8px 12px;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 4px;
     margin-right: 12px;
 }
@@ -29,5 +29,14 @@
 .search-component button:hover {
     background-color: #000;
     color: #fff;
-    border: 1px solid #27272a;
+    border: 1px solid #fff;
+}
+
+.movies-container {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 24px 0;
 }

@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { FadeLoader } from "react-spinners";
+import MovieCard from '../../components/MovieCard';
 import './index.css'
 
 const SearchMovies = () => {
@@ -61,26 +62,33 @@ const SearchMovies = () => {
                 <input 
                     type="search"
                     onChange={e => setSearchInput(e.target.value)}
-                    value={searchInput} />
+                    value={searchInput}
+                    placeholder='Search movies' />
                 <button type="submit" >Search</button>
             </form>
 
-            <div>
+            <div className="movies-container">
                 {isLoading? 
-                <FadeLoader
-                    loading={isLoading}
-                    size={100}
-                    color="grey"
-                    cssOverride={{
-                        display: 'block',
-                        margin: '100px auto',
-                        borderColor: '#007bff'
-                    }}
-                    aria-label="Loading Spinner"
-                    data-testid="loader"
-                /> :searchResults.map((movie, index) => {
-                    return (<h1 key={index}>{movie.title}</h1>)
-                })
+                    <FadeLoader
+                        loading={isLoading}
+                        size={100}
+                        color="grey"
+                        cssOverride={{
+                            display: 'block',
+                            margin: '100px auto',
+                            borderColor: '#007bff'
+                        }}
+                        aria-label="Loading Spinner"
+                        data-testid="loader"
+                    /> 
+                    :
+                    searchResults.map((movie, index) => {
+                        return (
+                            <MovieCard 
+                                key={index}
+                                movie={movie} />
+                        )
+                    })
                 }
             </div>
         </section>

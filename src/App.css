@@ -2,7 +2,7 @@ section {
     min-height: 100vh;
     width: 100%;
     max-width: 1400px;
-    border-left: 1px dashed #27272a;
-    border-right: 1px dashed #27272a;
+    border-left: 1px dashed #fff;
+    border-right: 1px dashed #fff;
     padding-top: 60px;
 }

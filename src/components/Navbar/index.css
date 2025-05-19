@@ -1,7 +1,7 @@
 header {
     width: 100%;
     height: 60px;
-    border-bottom: 1px dashed #27272a;
+    border-bottom: 1px dashed #fff;
     position: fixed;
     top: 0;
     z-index: 999;
@@ -15,8 +15,8 @@ nav {
     height: 100%;
     width: 100%;
     max-width: 1400px;
-    border-left: 1px dashed #27272a;
-    border-right: 1px dashed #27272a;
+    border-left: 1px dashed #fff;
+    border-right: 1px dashed #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,6 +27,10 @@ a {
     font-size: 17   px;
     margin: 0 12px;
     text-decoration: none;
-    color: #c8c8c8;
+    color: #bcbbbb;
     letter-spacing: 1px;
+}
+
+a:hover {
+    color: #fff;
 }
