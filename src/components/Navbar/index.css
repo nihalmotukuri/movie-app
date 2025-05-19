@@ -4,6 +4,7 @@ header {
     border-bottom: 1px dashed #27272a;
     position: fixed;
     top: 0;
+    z-index: 999;
     display: flex;
     justify-content: center;
     background-color: #09090b8e;
@@ -23,7 +24,7 @@ nav {
 }
 
 a {
-    font-size: 17px;
+    font-size: 17   px;
     margin: 0 12px;
     text-decoration: none;
     color: #c8c8c8;
