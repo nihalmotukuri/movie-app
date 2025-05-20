@@ -5,20 +5,23 @@ import SearchMovies from './pages/SearchMovies'
 import Trending from './pages/Trending'
 import Favorites from './pages/Favorites'
 import MovieDetails from './pages/MovieDetails'
+import { FavMovieContextProvider } from './contexts/FavoriteMovieContext'
 import './App.css'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/search-movies' element={<SearchMovies />} />
-        <Route path='/trending' element={<Trending />} />
-        <Route path='/favorites' element={<Favorites />} />
-        <Route path='/movie-details' element={<MovieDetails />} />
-      </Routes>
-    </BrowserRouter>
+    <FavMovieContextProvider>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/search-movies' element={<SearchMovies />} />
+          <Route path='/trending' element={<Trending />} />
+          <Route path='/favorites' element={<Favorites />} />
+          <Route path='/movie-details' element={<MovieDetails />} />
+        </Routes>
+      </BrowserRouter>
+    </FavMovieContextProvider>
   )
 }
 

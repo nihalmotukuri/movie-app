@@ -5,21 +5,6 @@ const SearchResults = props => {
     const { searchResults, onSearch } = props
     const searchResultText = onSearch? "No search results found" : "Search for movies"
 
-    const displaySearchResults = () => {
-        if (searchResults.length > 0) {
-            return (
-                searchResults.map((movie, index) => {
-                    return (
-                        <MovieCard 
-                            key={index}
-                            movie={movie} />
-                    )
-                })
-            )
-        }
-        return <p>{searchResultText}</p>
-    }
-
     return (
         <>
             {

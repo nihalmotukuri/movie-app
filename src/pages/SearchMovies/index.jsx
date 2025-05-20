@@ -3,6 +3,8 @@ import { FadeLoader } from "react-spinners";
 import SearchResults from '../../components/SearchResults';
 import './index.css'
 
+const apiKey = import.meta.env.VITE_TMDB_API_KEY
+
 const SearchMovies = () => {
     const [searchInput, setSearchInput] = useState('')
     const [searchResults, setSearchResults] = useState([])
@@ -15,21 +17,19 @@ const SearchMovies = () => {
         setOnSearch(true)
 
         const getTrailerKey = async movieId => {
-            const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=ab2e9fcb961ed38190348436b4044af8`
+            const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`
             try {
                 const res = await fetch(url)
                 const jsonData = await res.json()
-                const results = jsonData.results[0]
-                if (results && results.type === 'Trailer') {
-                    return results.key
-                }
+                const results = jsonData.results.find(movieVideo => movieVideo.type === 'Trailer' && movieVideo.site === 'YouTube')
+                if (results) return results.key
             } catch (err) {
                 console.error(err)
             }
         }
 
         const fetchMovies = async () => {
-            const url = `https://api.themoviedb.org/3/search/movie?api_key=ab2e9fcb961ed38190348436b4044af8&query=${searchInput}`
+            const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchInput}`
             try {
                 const res = await fetch(url)
                 const jsonData = await res.json()
@@ -37,7 +37,7 @@ const SearchMovies = () => {
                 const movieDetails = await Promise.all(
                     results.map(async movie => {
                         const trailerKey = await getTrailerKey(movie.id)
-                        if (!trailerKey) return {...movie}
+                        if (!trailerKey) return null
                         return {
                             ...movie,
                             trailerKey

@@ -5,8 +5,8 @@
     overflow: hidden;
     display: flex;
     align-items: center;
-    margin: 12px;
     cursor: pointer;
+    position: relative;
 }
 
 .movie-card img {
@@ -16,4 +16,28 @@
 
 .movie-card:hover img {
     scale: 1.1;
+}
+
+/* .movie-card:hover .fav-icon {
+    display: block;
+} */
+
+.fav-icon {
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 32px;
+    background-color: rgba(38, 38, 38, 0.475);
+    height: 38px;
+    width: 38px;
+    padding: 0 10px;
+    padding-bottom: 24px;
+    border-radius: 50%;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.fav-icon:hover {
+    color: red;
 }
