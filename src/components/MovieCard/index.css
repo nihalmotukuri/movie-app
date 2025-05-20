@@ -18,12 +18,8 @@
     scale: 1.1;
 }
 
-/* .movie-card:hover .fav-icon {
-    display: block;
-} */
-
 .fav-icon {
-    display: block;
+    display: none;
     position: absolute;
     top: 8px;
     right: 8px;
@@ -34,8 +30,11 @@
     padding: 0 10px;
     padding-bottom: 24px;
     border-radius: 50%;
-    transition: all .2s;
     cursor: pointer;
+}
+
+.movie-card:hover .fav-icon {
+    display: block;
 }
 
 .fav-icon:hover {
