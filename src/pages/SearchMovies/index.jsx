@@ -1,16 +1,18 @@
 import { useState } from 'react'
 import { FadeLoader } from "react-spinners";
-import MovieCard from '../../components/MovieCard';
+import SearchResults from '../../components/SearchResults';
 import './index.css'
 
 const SearchMovies = () => {
     const [searchInput, setSearchInput] = useState('')
     const [searchResults, setSearchResults] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [onSearch, setOnSearch] = useState(false)
 
     const handleSearch = e => {
         e.preventDefault()
         setIsLoading(true)
+        setOnSearch(true)
 
         const getTrailerKey = async movieId => {
             const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=ab2e9fcb961ed38190348436b4044af8`
@@ -35,7 +37,7 @@ const SearchMovies = () => {
                 const movieDetails = await Promise.all(
                     results.map(async movie => {
                         const trailerKey = await getTrailerKey(movie.id)
-                        if (!trailerKey) return null
+                        if (!trailerKey) return {...movie}
                         return {
                             ...movie,
                             trailerKey
@@ -82,13 +84,7 @@ const SearchMovies = () => {
                         data-testid="loader"
                     /> 
                     :
-                    searchResults.map((movie, index) => {
-                        return (
-                            <MovieCard 
-                                key={index}
-                                movie={movie} />
-                        )
-                    })
+                    <SearchResults searchResults={searchResults} onSearch={onSearch} />
                 }
             </div>
         </section>
