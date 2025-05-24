@@ -9,7 +9,7 @@ const SearchResults = props => {
         <>
             {searchResults.length > 0
             ? searchResults.map((movie, index) => <MovieCard key={index} movie={movie} />) 
-            : <p>{searchResultText}</p>}
+            : <p style={{textAlign: "center"}}  >{searchResultText}</p>}
         </>
     )
 }
