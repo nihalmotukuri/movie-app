@@ -7,18 +7,9 @@ const SearchResults = props => {
 
     return (
         <>
-            {
-                searchResults.length > 0?
-                    searchResults.map((movie, index) => {
-                        return (
-                            <MovieCard 
-                                key={index}
-                                movie={movie} />
-                        )
-                    }) 
-                    :
-                    <p>{searchResultText}</p>
-            }
+            {searchResults.length > 0
+            ? searchResults.map((movie, index) => <MovieCard key={index} movie={movie} />) 
+            : <p>{searchResultText}</p>}
         </>
     )
 }

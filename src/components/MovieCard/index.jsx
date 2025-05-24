@@ -5,7 +5,6 @@ import './index.css'
 
 const MovieCard = ({movie}) => {
     const navigate = useNavigate()
-    // const [isFavorite, setIsFavorite] = useState(false)
     const { toggleFavorite, isFavorite } = useFavMovieContext()
     const favColor = isFavorite(movie) ? 'red' : 'white'
 
@@ -17,7 +16,6 @@ const MovieCard = ({movie}) => {
 
     const onFavorite = e => {
         e.stopPropagation()
-        // setIsFavorite(!isFavorite)
         toggleFavorite(movie)
     }
 
